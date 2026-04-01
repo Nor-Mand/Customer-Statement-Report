@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    # create wizard action to pop up option
+    <record id="customer_statement_print_action_wizard" model="ir.actions.act_window">
+        <field name="name">Statement account</field>
+        <field name="res_model">customer.statement.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+
+    # set option using the wheel icon
+   #records.write({'comment': 'Updated from wheel menu'})
+    <record id="customer_statement_print_action" model="ir.actions.server">
+        <field name="name">Print Customer Statement</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="binding_model_id" ref="model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action_values = env.ref('customer_statement_report.customer_statement_print_action_wizard').read()[0]
+                action = action_values
+        </field>
+    </record>
+</odoo>

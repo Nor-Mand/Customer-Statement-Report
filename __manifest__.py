@@ -7,5 +7,8 @@
     'website': "https://www.normand.dev",
     'category': "Tools",
     'depends': ['base','account'],
-    'data': [],
+    'data': [
+        "security/ir.model.access.csv",
+        "wizard/customer_statement_wizard_view.xml",
+    ],
 }
