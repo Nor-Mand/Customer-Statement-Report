@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+
+    # Form view
+    <record id="customer_statement_print_form" model="ir.ui.view">
+        <field name="name">customer.statement.print.form</field>
+        <field name="model">customer.statement.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="My Print">
+                <group>
+                    <field name="partner_id"/>
+                </group>
+                <footer>
+                    <button 
+                        name="action_print_report" 
+                        type="object" 
+                        string="Print PDF" 
+                        class="btn-primary"/>
+                    <button
+                        string="Cancel"
+                        class="btn-link"
+                        special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
     # create wizard action to pop up option
     <record id="customer_statement_print_action_wizard" model="ir.actions.act_window">
         <field name="name">Statement account</field>
@@ -10,7 +34,8 @@
     </record>
 
     # set option using the wheel icon
-   #records.write({'comment': 'Updated from wheel menu'})
+    # records.write({'comment': 'Updated from wheel menu'})
+    
     <record id="customer_statement_print_action" model="ir.actions.server">
         <field name="name">Print Customer Statement</field>
         <field name="model_id" ref="model_res_partner"/>
